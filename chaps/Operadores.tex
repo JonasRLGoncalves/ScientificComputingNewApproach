@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Operadores}
+\author{Jonas Gonçalves}
+\date{October 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Operadores}
+    \begin{itemize}
+        \item Operador Delta (\(\Delta\)):
+            \begin{equation}
+                \Delta\textit{f(t)} \equiv \textit{f(t+h) - f(t)}
+            \end{equation}
+    
+        \item Operador E:
+            \begin{equation}
+                E\textit{f(t)} \equiv \textit{f(t+h)}
+            \end{equation}
+        \item Operador I:
+            \begin{equation}
+                I\textit{f(t)} \equiv \textit{f(t)}
+            \end{equation}
+    \end{itemize}
+
+\section{Conclusões}
+    Podemos perceber que ao combinar a equação (1) com a (2) e (3), nós vamos obter:
+    \begin{equation}
+        \Delta\textit{f(t)} = E\textit{f(t)} - I\textit{f(t)}
+    \end{equation}
+    \begin{equation}
+        \Delta = E - I
+    \end{equation}
+    Outra conclusão seria:
+    \begin{equation}
+        E^k\textit{y} = y(x+kh)
+    \end{equation}
+    Podemos obter isto por meio de uma indução em k, tomando a base = 1.
+    \[k = 1 \Longrightarrow E\textit{f(t)} = \Delta\textit{f(t)} + I\textit{f(t)} = \textit{f(t+h) - f(t) + f(t)} = \textit{f(t+h)} \]
+    \[k = n \Longrightarrow E^n\textit{f(t)} = \textit{f(t + nh)}  \]
+    \[E^{n+1}\textit{f(t)} = E(E^n\textit{f(t)}) = E(\textit{f(t + nh)}) = f(t + nh + h) = f(t + (n+1)h)\]
+    
+\section{Demonstração}
+    Tomando \textit{y(x)} como:
+    \begin{equation}
+        \textit{y(x)} = \sum_{k = 0}^{n} a_k x^k
+    \end{equation}
+    Queremos provar que para todo \(n \in Z\), nós temos:
+    \begin{equation}
+        \Delta^n\textit{y(x)} = n!h^n a_n
+    \end{equation}
+    Uma rápida consequência disto seria que para todo j \(>\) n teríamos:
+    \begin{equation}
+        \Delta^j\textit{y(x)} = 0
+    \end{equation}
+    Isto é fácil de visualizar, pois:
+    \[\Delta^{n+1}\textit{y(x)} = \Delta(\Delta^n\textit{y(x)} = \Delta(n!h^na_n) = n!h^na_n - n!h^na_n = 0\]
+    Analogamente,
+    \[\Delta(Constante) = 0\]
+    Agora, vamos provar por meio de uma indução que a equação (8) é verdade. Vamos tomar como base k = 1.
+    \[ \textit{y(x)} = a_0 + a_1x\]
+    \[k = 1 \Longrightarrow \Delta^1\textit{y(x)} = \Delta\textit{y(x)} = \Delta(a_0+a_1x) = a_0 + a_1(x+h) - a_0 - a_1x = a_1h\]
+    Tomando como verdade para n, vamos analisar o caso n+1:
+    \[k = n+1 \Longrightarrow \textit{y(x)} = \sum_{k = 0}^{n+1} a_k x^k\]
+    \[\Delta\textit{y(x)} = \Delta\sum_{k = 0}^{n+1} a_k x^k = \sum_{k = 0}^{n+1} \Delta(a_kx^k) = \sum_{k = 0}^{n+1} a_k(x+h)^k - \sum_{k = 0}^{n+1} a_kx^k\]
+    \[= \sum_{k = 1}^{n+1} a_k\sum_{j = 1}^{k} {k \choose j}x^{k-j}h^j = \sum_{k = 1}^{n+1} a_k\sum_{j = 1}^{k} {k \choose j}x^{k-j}h^j\]
+    \[= \sum_{k = 0}^{n} a_{k+1}\sum_{j = 0}^{k} {k+1 \choose j+1}x^{k-j}h^{j+1}\]
+    Vamos visualizar isto de outra maneira:
+    \[\sum_{k = 0}^{n} a_{k+1}\{{k+1 \choose 1}x^kh + {k+1 \choose 2} x^{n-1}h^{2}+...+ {k+1 \choose k}xh^k+h^{k+1}\}\]
+    Ao aplicarmos a equação (9) da nossa hipótese de indução podemos perceber só existe um ter que não irá à 0:
+    \[{n+1 \choose 1}a_{n+1}xh^n\]
+    Vamos chamar tal termo de \textit{g(x)}, temos então:
+    \[\Delta(\textit{g(x)} = g(x+h) - g(x) = {n+1 \choose 1} a_{n+1} \{(x+h)h^n - x^n\} = (n+1)!a_{n+1}h^{n+1}\]
+    Portanto, comprovamos que a equação (8) é válida para y(x) na forma da equação (7).
+\end{document}
