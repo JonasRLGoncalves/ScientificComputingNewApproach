@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{indentfirst}
+
+\title{Simpson's Paradox}
+\author{Jonas Gonçalves}
+\date{September 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Paradox}
+According to Merriam-Webster dictionary the definition of paradox is:
+\begin{itemize}
+    \item[\textbf{1:}] a tenet contrary to received opinion
+    \item[\textbf{2:}]
+    \begin{itemize}
+        \item[\textbf{a.}] a statement that is seemingly contradictory or opposed to common sense and yet is perhaps true
+        \item[\textbf{b.}] a self-contradictory statement that at first seems true
+        \item[\textbf{c.}] an argument that apparently derives self-contradictory conclusions by valid deduction from acceptable premises
+    \end{itemize}
+    \item[\textbf{3:}] one (such as a person, situation, or action) having seemingly contradictory qualities or phases
+\end{itemize}
+\section{Introduction}
+Simpson's paradox is often used as an example  to illustrate  the kind of misleading results mis-applied statics can generate.
+
+\textbf{Simpson's paradox} is named after Edward Simpson, who first described this paradox in the 1951 paper  "The Interpretation of Interaction in Contingency Tables" from the Journal of the Royal Statistical Society. A similar paradox was earlier observed by Karl Pearson, in 1899, and Udny Yule, in 1903, so Simpson's paradox is sometimes referred to as \textbf{Yule-Simpson effect}.
+
+It's a phenomenon in probability and statistics, in which a trend appears in several different groups of data but disappears or reverses when these groups are combined. This is most often due to lurking variables that have not been considered, but sometimes is due to numerical values of the data. Understanding and identifying this paradox is important for correctly interpreting data.
+
+This result is often encountered in social-science and medical-science statistics and is particularly problematic when frequency data is unduly given casual interpretations. The paradox can be resolved when casual relations are appropriately addressed in the statistical modeling.
+
+\section{UC Berkeley gender bias}
+One of the best-know examples of Simpson's paradox is a study of gender bias among graduate school admissions to admissions to the \textbf{University of California}, \textbf{Berkeley}, for fall 1973. The examination of aggregate data shows a clear but misleading pattern of bias against female applicants, where men applying were more likely to be admitted than women, and the difference was so large that it was unlikely to be due to chance.$^{[1]}$
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c| }
+    \hline
+        \multirow{2}{*}{} 
+    &   \multicolumn{2}{|c|}{Men}
+    &   \multicolumn{2}{|c|}{Women} \\
+    \cline{2-5}
+    & Applicants
+    & Admitted
+    & Applicants
+    & Admitted \\
+    \hline
+    \textbf{Total} & 8442 & \textbf{44\%} & 4321 & \textbf{35\%}\\
+    \hline
+    \end{tabular}
+\end{center}
+
+Examination of the disaggregated data reveals few decision-making units that show statistically significant departures from expected frequencies of female admissions, and about as many units appear to favor women as to favor men.
+In fact, if the data are properly pooled and corrected, there is "a small but statistically significant bias in favor of women"$^{[1]}$.The data from the six largest departments are listed below.
+
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c| }
+    \hline
+        \multirow{2}{*}{Department} 
+    &   \multicolumn{2}{|c|}{Men}
+    &   \multicolumn{2}{|c|}{Women} \\
+    \cline{2-5}
+    & Applicants
+    & Admitted
+    & Applicants
+    & Admitted \\
+    \hline
+    A & 825 & \textbf{62\%} & 108 & \textbf{82\%} \\
+    \hline
+    B & 560 & \textbf{63\%} & 25 & \textbf{68\%} \\
+    \hline
+    C & 325 & \textbf{37\%} & 593 & \textbf{34\%} \\
+    \hline
+    D & 417 & \textbf{33\%} & 375 & \textbf{35\%} \\
+    \hline
+    E & 191 & \textbf{28\%} & 393 & \textbf{24\%} \\
+    \hline
+    F & 373 & \textbf{6\%} & 341 & \textbf{7\%} \\
+    \hline
+    \end{tabular}
+\end{center}
+
+The research paper by Bickel et al.[1] concluded that there is a "tendency of women to apply to graduate departments that are more difficult for applicants of either sex to enter"$^[1]$, whereas men tended to apply to less-competitive departments with high rates of admission among the qualified applicants.
+
+\section{References}
+\begin{itemize}
+    \item[\textbf{[1]}] P.J. Bickel, E.A. Hammel and J.W. O'Connell (1975). "Sex Bias in Graduate Admissions: Data From Berkeley" (PDF). Science. 187 (4175): 398–404. doi:10.1126/science.187.4175.398. PMID 17835295.
+\end{itemize}
+\end{document}
