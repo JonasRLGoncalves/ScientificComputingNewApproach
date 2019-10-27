@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Hanoi Tower Problem}
+\author{Jonas Gonçalves}
+\date{October 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+    The Tower of Hanoi (also called the Tower of Brahma or Lucas' Tower and sometimes pluralized as Towers) is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
+
+    The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:
+    
+    \begin{itemize}
+        \item [\textbf{1.}] Only one disk can be moved at a time.
+        \item [\textbf{2.}] Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+        \item [\textbf{3.}] No larger disk may be placed on top of a smaller disk.
+    \end{itemize}
+\section{Exercise}
+    \begin{itemize}
+        \item[\textbf{a.}] With 3 disks, what's the lowest number of moves to solve?
+        \item[\textbf{b.}] What's the minimal number of moves required to solve a Tower of Hanoi puzzle with disks?
+    \end{itemize}
+    
+\section{Solving}
+    \begin{itemize}
+        \item[\textbf{a.}] With 3 disks, the puzzle can be solved in 7 moves.
+        \end{itemize}
+        \quad Let's consider all the disks on the first rod, rod A.
+        \begin{enumerate}
+            \item First,we move the disk on the top, disk 1, to the last rod, rod C.
+            \item Then, we move disk 2 to rod B.
+            \item Disk 1 to rod B, on top of disk 2.
+            \item Disk 3 to rod C.
+            \item Disk 1 to rod A.
+            \item Disk 2 to rod C.
+            \item Disk 1 to rod C.
+        \end{enumerate}
+        
+    \begin{itemize}
+        \item[\textbf{b.}] The minimal number of moves required to solve a Tower of Hanoi puzzle is \(2^n\) - 1, where n is the number of disks.
+    \end{itemize}
+    \quad One way to solve this puzzle is recursively. Let's say that the number of moves with n-1 disks is \(T_{n1}\), so we know that \(T_n = 2T_{n-1} + 1\), because:
+    \begin{enumerate}
+        \item We move the n-1 disks on the top to another rod making \(T_{n-1}\) moves
+        \item Then, we move the largest disk to the empty rod.
+        \item At last, we move n-1 disks (\(T_{n-1} moves\)) to the top of the largest disk.
+    \end{enumerate}
+    \[T_n = T_{n-1} + 1 + T_{n-1} = 2T_{n-1} + 1\]
+    Now, we have two possibilities: test some values and see if we can get any pattern or try to solve this recurrence relation.
+    \subsection{Testing values}
+        It's easy to see that:
+        \begin{center}
+            \(T_0 = 0\), \(T_1 = 1\) and \(T_2 = 3\)  
+        \end{center}
+        We know that \(T_3 = 7\), so it's easy to believe that the closed formula is:
+        \[T_n = 2^n - 1\]
+    \subsection{Solving the recurrence relation}
+        A generating function is a way of encoding an infinite sequence of numbers (\(a_n\)) by treating them as the coefficients of a power series.
+
+        \begin{equation}
+            T_n = 2T_{n-1} + 1
+        \end{equation}
+        
+        We can try to find a formula by using generating functions:
+        \begin{equation}
+            T\textit{(x)} = \sum_{k=0}^\infty a_kx^k
+        \end{equation}
+        \[T\textit{(x)} = 0 + \sum_{k=1}^\infty a_kx^k\]
+        \[T\textit{(x)} = \sum_{k=1}^\infty (2a_{k-1}+1)x^k\]
+        \[T\textit{(x)} = \sum_{k=1}^\infty 2a_{k-1}x^k + \sum_{k=1}^\infty x^k\]
+        \[T\textit{(x)} = 2x\sum_{k=1}^\infty 2a_{k-1}x^{k-1} + \sum_{k=1}^\infty x^{k-1}\]
+        \[T\textit{(x)} = 2x\sum_{k=0}^\infty 2a_{k}x^{k} + \sum_{k=0}^\infty x^{k} - 1\]
+        \[T\textit{(x)} = 2xT\textit{(x)} + \frac{1}{1-x} - 1\]
+        \[(1-2x)T\textit{(x)} = \frac{1}{1-x} - 1\]
+        \[T\textit{(x)} = \frac{1}{(1-x)(1-2x)} - \frac{1}{1-2x}\]
+        \[T\textit{(x)} = \frac{2}{1-2x} -\frac{1}{1-x} - \frac{1}{1-2x} = \frac{1}{1-2x} - \frac{1}{1-x}\]
+        \[T\textit{(x)} = \sum_{k=0}^\infty (2x)^k - \sum_{k=0}^\infty x^k = \sum_{k=0}^\infty (2^k-1)x^k \Longrightarrow a_k = 2^k-1\]
+        Thus,
+        \begin{equation}
+            T_n = 2^n - 1
+        \end{equation}
+\section{References}
+    \begin{itemize}
+        \item [\textbf{[1]}] https://en.wikipedia.org/wiki/Tower\_of\_Hanoi
+        \item [\textbf{[2]}] https://en.wikipedia.org/wiki/Generating\_function
+        \item [\textbf{[3]}] https://www.wikihow.com/Solve-Recurrence-Relations
+    \end{itemize}
+\end{document}
