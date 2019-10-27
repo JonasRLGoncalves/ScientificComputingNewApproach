@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Fibonacci Recurrence}
+\author{Jonas Gonçalves}
+\date{October 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+    In mathematics, the Fibonacci numbers, commonly denoted \(F_n\) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+
+        \[F_0 = 0 , F_1 = 1\]
+    
+        \begin{center}
+            and
+        \end{center}
+    
+        \begin{equation}
+            F_n = F_{n-1} + F_{n-2}, \forall n > 1
+        \end{equation}
+
+\section{Exercise}
+    Resolve the recurrence of fibonacci sequence.
+\section{Linear}
+    First, we'll write the characteristic polynomial of the recurrence
+    \[F_n = F_{n-1} + F_{n-2} \Longrightarrow x^2 - x - 1 = 0\]
+    The roots of this equation are:
+    \[a_1 = \frac{1+\sqrt{5}}{2}, a_2 = \frac{1-\sqrt{5}}{2}\]
+    We have that any expression on form show satisfies the recurssion:
+    \[F_n = c_1\bigg(\frac{1+\sqrt{5}}{2}\bigg)^n + c_2\bigg(\frac{1-\sqrt{5}}{2}\bigg)^n\]
+    Now, we only need to find \(c_1\) and \(c_2\) to satisfie initial conditions:
+    \[n = 2 \Longrightarrow F_2 = c_1\bigg(\frac{1+\sqrt{5}}{2}\bigg)^2 + c_2\bigg(\frac{1-\sqrt{5}}{2}\bigg)^2 = 1\]
+    Thus,
+    \[c_1\bigg(\frac{1+\sqrt{5}}{2}\bigg)^2 + c_2\bigg(\frac{1-\sqrt{5}}{2}\bigg)^2 = 1\]
+    And,
+    \[n = 3 \Longrightarrow F_3 = c_1\bigg(\frac{1+\sqrt{5}}{2}\bigg)^3 + c_2\bigg(\frac{1-\sqrt{5}}{2}\bigg)^3 = 2\]
+    \[c_1\bigg(\frac{1+\sqrt{5}}{2}\bigg)^3 + c_2\bigg(\frac{1-\sqrt{5}}{2}\bigg)^3 = 2\]
+    Solving this system:
+    \[c_1 = \frac{1}{\sqrt{5}}, c2 = \frac{-1}{\sqrt{5}}\]
+    \begin{equation}
+        F_n = \frac{1}{\sqrt{5}}\bigg(\frac{1+\sqrt{5}}{2}\bigg)^n - \frac{1}{\sqrt{5}}\bigg(\frac{1-\sqrt{5}}{2}\bigg)^n
+    \end{equation}
+\section{Generating Functions}
+    \[F_n = F_{n-1} + F_{n-2}\]
+    First, we  begin by defining the generating function for the Fibonacci numbers as the formal power series whose coefficients are the Fibonacci numbers themselves.
+    \[F\textit{(x)} = \sum_{k=0}^\infty a_kx^k = \sum_{k=0}^\infty F_kx^k\]
+    \[F\textit{(x)} = F\textit{(0)} + \sum_{k=1}^\infty F_kx^k = F\textit{(1)} + \sum_{k=2}^\infty F_kx^k = 1  + \sum_{k=2}^\infty F_kx^k \]
+    \[F\textit{(x)} = x + \sum_{k=2}^\infty (F_{k-1} + F_{k-2})x^k = 1 + \sum_{k=2}^\infty F_{k-1}x^k + \sum_{k=2}^\infty F_{k-2}x^k\]
+    \[F\textit{(x)} = x + x\sum_{k=0}^\infty F_kx^k + x^2\sum_{k=0}^\infty F_kx^k\]
+    \[F\textit{(x)}(1 - x - x^2) = x \Longrightarrow F\textit{(x)} = \frac{x}{1 - x - x^2}\]
+    We know that the roots of \(x^2 + x - 1\) are:
+    \[r_1 = -\frac{1+\sqrt{5}}{2},r_2 = -\frac{1-\sqrt{5}}{2} \]
+    \[ 1 - x - x^2 = (x-r_1)(x-r_2) = \bigg(x-\frac{1+\sqrt{5}}{2}\bigg)\bigg(x-\frac{1-\sqrt{5}}{2}\bigg)\]
+    Thus,
+    \[F\textit{(x)} = \frac{x}{1 - x - x^2} = \frac{1}{\sqrt{5}}\bigg(\frac{1}{x-r_1} -\frac{1}{x-r_2}\bigg)\]
+    Let,
+    \[\alpha = -r1 = \frac{1+\sqrt{5}}{2}, \beta = -r_2 = \frac{1-\sqrt{5}}{2} \]
+    \[F\textit{(x)} = \frac{1}{\sqrt{5}}\bigg(\frac{1}{x+\alpha} -\frac{1}{x+\beta}\bigg) = \frac{1}{\sqrt{5}}\bigg(\sum_{k=0}^\infty (\alpha^k-\beta^k)x^k\bigg)\]
+    Thus,
+    \begin{equation}
+        F\textit{(x)} = \frac{1}{\sqrt{5}}(\alpha^n-\beta^n) = \frac{1}{\sqrt{5}}\bigg\{\bigg(\frac{1+\sqrt{5}}{2}\bigg)^n-\bigg(\frac{1-\sqrt{5}}{2}\bigg)^n\bigg\}
+    \end{equation}
+    
+\section{References}
+    \begin{itemize}
+        \item[\textbf{[1]}] https://en.wikipedia.org/wiki/Fibonacci\_number
+        \item[\textbf{[2]}] https://www.wikihow.com/Solve-Recurrence-Relations
+        \item[\textbf{[3]}] https://austinrochford.com/posts/2013-11-01-generating-functions-and-fibonacci-numbers.html
+        \end{itemize}
+\end{document}
