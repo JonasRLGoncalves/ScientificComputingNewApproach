@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Overfitting}
+\author{Jonas Gonçalves}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+    In statistics, \textbf{overfitting}  is, according to the Oxford Dictionary, "the production of an analysis that corresponds too closely or exactly to a particular set of data, and may therefore fail to fit additional data or predict future observations reliably". That is, overfitting is a modeling error that occurs when a function is too closely fit to a limited set of data points.
+    
+    Overfitting a model usually occurs when an overly complex model is utilized to explain idiosyncrasies in the data under study. The overfitted model is a statistical model that contains more parameters than can be justified by the data, and it's a model that is inaccurate because the trend doesn't reflect the reality of the data.
+    
+    The essence of overfitting is to have unknowingly extracted some of the residual variation, i.e. the noise, as if that variation represented underlying model structure. This mistake can lead to a model, so complex, that it's unable to predict data correctly in the future.
+    
+    The possibility of overfitting exists when the criterion used for the selection of the model is not he same used to judge the suitability of the model. For example, if a mode is selected to maximize its performance on some set of training data, but doesn't take into account that it should perform well on unseen data in the future, overfitting will occur. This happens because the model fits to perfectly to the training data rather than "learning" to generalize from a trend.
+
+
+\section{Underfitting}
+    
+    Trying to avoid an overly complicated model is always good, but when the model fails learn the relationships in the training data, we have what is called: \textbf{underfitting}. An underfitted model occurs when it doesn't fit the data enough. It occurs if the model shows low variance but high bias (to contrast the opposite, overfitting from high variance and low bias). Often it can be a result of an excessively simple model.
+
+\section{Bibliography}
+
+    \begin{itemize}
+        
+        \item[1.] https://en.wikipedia.org/wiki/Overfitting#cite\_note-1
+        \item[2.] https://elitedatascience.com/overfitting-in-machine-learning#overfitting-vs-underfitting
+        \item[3.] https://www.investopedia.com/terms/o/overfitting.asp
+        \item[4.] https://www.techopedia.com/definition/32512/overfitting
+        
+    \end{itemize}
+\end{document}
