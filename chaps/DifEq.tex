@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Difference Equations}
+\author{Jonas Gonçalves}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+    ``Difference equations relate to differential equations as discrete mathematics relates to continuous mathematics"[1]
+    
+    Difference equations are interesting on the field of Probability and Computer Science for many different reasons. For example, on Computer Science, difference equations frequently arise when determining the cost of an algorithm in big-O notation, due to the different and difficult recurrence relationships that can appear.
+    
+    Since difference equations can be readily handled by programs, a possible approach to solving hard differential equations is to convert to an approximately equivalent difference equation.
+    
+\section{Classification}
+    
+    As with differential equations, an difference equation can have its order referred and classified as \textit{linear} or \textit{non-linear} and whether it is \textit{homogeneous} or \textit{nonhomogeneous}.
+    
+\section{Linear Difference Equations}
+
+    Linear difference equations sets equal to 0 a polynomial that is linear in the various iterates of a variable (that is, in the values of the elements of a sequence). The linearity of the polynomial means that each one of its terms has degree 0 or 1.
+    
+    Usually there is the context in which a variable is evolving over time, with the current time period or discrete moment in time denoted as \textit{t}, one period earlier denoted as \textit{t}-h, one period later as \textit{t}+h, where \textit{h} represents the period.
+    
+    An \textbf{n}th order linear difference equation is one that can be written in terms of parameters \(a_i\) and b as:
+    \[y_t = a_1 y_{t-1} + ... + a_n y_{t-n} + b\]
+    
+    or equivalently as:
+    
+    \[y_{t+n} = a_1 y_{t+n+1} + ... + a_n y_t + b\]
+    
+    The linear difference equation is called homogeneous if b = 0 and nonhomogeneous if b \(\ne\) 0.
+    
+\section{Bibliography}
+
+    \begin{itemize}
+        \item[1.]  https://www.cl.cam.ac.uk/teaching/2003/Probability/prob07.pdf
+        \item[2.] https://en.wikipedia.org/wiki/Linear\_difference\_equation
+    \end{itemize}
+
+\end{document}
