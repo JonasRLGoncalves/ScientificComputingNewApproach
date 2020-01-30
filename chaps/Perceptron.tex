@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+
+\title{Perceptron}
+\author{Jonas Gonçalves}
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+    
+    The perceptron is a type of \textbf{Artificial Neural Network} (\textbf{ANN}), invented in 1958 at the Cornell Aeronautical Laboratory by Frank Reasonable. It can be seen as the simplest model of feedforward neural network: a linear classifier.
+    
+    In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers, an algorithm that classifies elements of a given set into two groups on the basis of a classification rule. 
+    
+    One of its defining characteristics is that it's not just an iterative set of processes, but an evolving process where the machine learn from the data received over time.
+    
+\section{Definition}
+
+    The perceptron is an algorithm for learning a binary classifier called a \textbf{threshold function}: a function that maps its input \textbf{x}, a real-valued vector, to an output value, a single binary value, \textit{f}(\textbf{x}):
+    
+    \[
+        \textit{f}(\textbf{x}) =
+        \begin{dcases}
+            1, & \text{if } \mathbf{w} \cdot \mathbf{x} + b > 0\\
+            0, & \text{otherwise}
+        \end{dcases}
+    \]
+    
+    where \textbf{w} is a vector of real-valued weights, \textbf{w} \(\cdot\) \textbf{x} is the product \(\sum_{i=1}^{m} w_i x_i\), where \textit{m} is the number of inputs to the perceptron, and \textbf{b} is the bias.
+    
+    The bias b doesn't depends on any input value, it shifts the decision boundary from the origin. 
+    
+    The image of the function, \textit{f}(\textbf{x}) is the set {0,1}, and those two different elements are utilized to classify \textbf{x} as either a positive or negative instance, in the case of a binary classification problem.
+    
+    The perceptron algorithm will never terminate if the learning set is not linearly separable, because the algorithm will never reach a point where all vectors are classified properly.
+\section{Bibliography}
+    \begin{itemize}
+        \item[1.] https://en.wikipedia.org/wiki/Perceptron\#Learning\_algorithm
+        \item[2.] https://pt.wikipedia.org/wiki/Perceptron
+        \item[3.] https://en.wikipedia.org/wiki/Binary\_classification
+        \item[4.] https://en.wikipedia.org/wiki/Supervised\_learning
+        \item[5.] https://en.wikipedia.org/wiki/Feedforward\_neural\_network
+        \item[6.] https://www.techopedia.com/definition/21333/perceptron
+    \end{itemize}
+\end{document}
